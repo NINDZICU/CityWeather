@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.khlopunov.cityweather.R;
+import com.example.khlopunov.cityweather.activity.MainActivity;
 import com.example.khlopunov.cityweather.entities.City;
 import com.example.khlopunov.cityweather.providers.CitiesProvider;
 
@@ -39,13 +40,15 @@ public class AddCityFragment extends DialogFragment {
                 String name = etCityName.getText().toString();
 
                 etCityName.setText("");
-//                myFragment = ;
+                myFragment = new MyFragment().newInstance(name);
+                myFragment.startTask(name);
 
-                if(new MyFragment().newInstance(name).getResult()) {
+//                if(myFragment.getResult()) {
+                if(MainActivity.result==1){
                     CitiesProvider.getInstance(getActivity()).addCity(new City(
                             name));
                 }
-
+                MainActivity.result=1;
                 dismiss();
             }
         });

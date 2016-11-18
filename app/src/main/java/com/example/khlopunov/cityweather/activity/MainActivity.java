@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnAddCity;
     AddCityFragment fragment;
     public TextView tvError;
+    public static int result=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

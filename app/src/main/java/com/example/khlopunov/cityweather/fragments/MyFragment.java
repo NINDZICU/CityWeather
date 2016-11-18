@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
 import com.example.khlopunov.cityweather.activity.CityInfoActivity;
+import com.example.khlopunov.cityweather.activity.MainActivity;
 import com.example.khlopunov.cityweather.interfaces.OpenWeatherMap;
 import com.example.khlopunov.cityweather.interfaces.TaskInterface;
 import com.example.khlopunov.cityweather.pojo.Weather;
@@ -118,6 +119,7 @@ public class MyFragment extends Fragment {
                 Response<Weather> response = weatherCall.execute();
                 if (response.errorBody() != null) {                                //обработка ошибки
                     result=false;
+                    MainActivity.result=0;
                     return String.valueOf(response.code());
                 }
                 Weather weather = response.body();
