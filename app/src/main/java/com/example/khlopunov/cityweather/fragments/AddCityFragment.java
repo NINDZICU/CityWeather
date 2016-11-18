@@ -19,10 +19,10 @@ import com.example.khlopunov.cityweather.providers.CitiesProvider;
  */
 
 public class AddCityFragment extends DialogFragment {
-    EditText etCityName;
-    Button btnAdd;
-    Button btnClose;
-
+   private EditText etCityName;
+   private Button btnAdd;
+   private Button btnClose;
+    private MyFragment myFragment;
 
     @Nullable
     @Override
@@ -39,8 +39,13 @@ public class AddCityFragment extends DialogFragment {
                 String name = etCityName.getText().toString();
 
                 etCityName.setText("");
-                CitiesProvider.getInstance(getActivity()).addCity( new City(
-                       name));
+//                myFragment = ;
+
+                if(new MyFragment().newInstance(name).getResult()) {
+                    CitiesProvider.getInstance(getActivity()).addCity(new City(
+                            name));
+                }
+
                 dismiss();
             }
         });

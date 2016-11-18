@@ -17,6 +17,14 @@
         android:layout_height="wrap_content"
         android:textSize="70dp"
         android:layout_gravity="center|top"/>
+
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar" />
+
     <TextView
         android:id="@+id/tv_degrees"
         android:layout_width="wrap_content"
@@ -24,4 +32,6 @@
         android:textSize="80dp"
         android:textColor="#BB0000"
         android:layout_gravity="center"/>
+
+
 </LinearLayout>
