@@ -35,13 +35,13 @@ public class MyFragment extends Fragment {
 
     @Override
     public void onAttach(Context context) {
-        interf(context);
+        setInterface(context);
         super.onAttach(context);
     }
 
     @Override
     public void onAttach(Activity activity) {
-        interf(activity);
+        setInterface(activity);
         super.onAttach(activity);
     }
 
@@ -58,7 +58,7 @@ public class MyFragment extends Fragment {
         }
     }
 
-    private void interf (Context context) {
+    private void setInterface (Context context) {
         if (context instanceof TaskInterface) {
             taskInterface = (TaskInterface) context;
         }
