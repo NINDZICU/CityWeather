@@ -8,7 +8,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.khlopunov.cityweather.R;
-//import com.example.khlopunov.cityweather.asyncTasks.RetrofitAsyncTask;
 import com.example.khlopunov.cityweather.fragments.MyFragment;
 import com.example.khlopunov.cityweather.interfaces.TaskInterface;
 
@@ -40,15 +39,7 @@ public class CityInfoActivity extends AppCompatActivity implements TaskInterface
         else{
             progressBar.setVisibility(View.GONE);
         }
-
-
-
-//        RetrofitAsyncTask retrofitAsyncTask = new RetrofitAsyncTask(CityInfoActivity.this, name);
-//        retrofitAsyncTask.execute();
-//        String degrees = intent.getStringExtra("degrees");
         tvNameCity.setText(name);
-//        tvDegrees.setText(degrees);
-
     }
 
     @Override

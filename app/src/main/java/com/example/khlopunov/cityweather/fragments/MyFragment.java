@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
-import com.example.khlopunov.cityweather.activity.CityInfoActivity;
-import com.example.khlopunov.cityweather.activity.MainActivity;
 import com.example.khlopunov.cityweather.interfaces.OpenWeatherMap;
 import com.example.khlopunov.cityweather.interfaces.TaskInterface;
 import com.example.khlopunov.cityweather.pojo.Weather;
@@ -29,6 +27,7 @@ public class MyFragment extends Fragment {
     private MyAsyncTask task;
     private String city;
     private boolean result=true;
+    private boolean contin=false;
 
     public boolean isRunning(){
         return task!=null;
@@ -89,11 +88,9 @@ public class MyFragment extends Fragment {
 
     public class MyAsyncTask extends AsyncTask<Void, Integer, String> {
 
-//        private CityInfoActivity cityInfoActivity;
         private String name;
 
         public MyAsyncTask( String name) {
-//            this.cityInfoActivity = cityInfoActivity;
             this.name = name;
         }
 
@@ -115,13 +112,15 @@ public class MyFragment extends Fragment {
 
             Call<Weather> weatherCall = openWeatherMap.getWeather(name, OpenWeatherMap.API_KEY);
             String temp = "";
+
             try {
                 Response<Weather> response = weatherCall.execute();
                 if (response.errorBody() != null) {                                //обработка ошибки
                     result=false;
-                    MainActivity.result=0;
+                    contin=true;
                     return String.valueOf(response.code());
                 }
+                contin=true;
                 Weather weather = response.body();
                 temp = (String.valueOf((int) (weather.getMain().getTemp() - 273)) + " °С");
 
@@ -171,4 +170,7 @@ public class MyFragment extends Fragment {
     }
     public boolean getResult(){return  result;}
 
+    public boolean isContin() {
+        return contin;
+    }
 }
